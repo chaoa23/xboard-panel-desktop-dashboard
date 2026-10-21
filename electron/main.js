@@ -564,7 +564,7 @@ function createTrayIcon() {
 function createTray() {
   if (tray) return;
   tray = new Tray(createTrayIcon());
-  tray.setToolTip('薄荷云仪表盘');
+  tray.setToolTip('Xboard面板桌面仪表盘');
   const menu = Menu.buildFromTemplate([
     { label: '打开设置窗口', click: () => openSettings() },
     { label: '刷新数据', click: () => { void fetchStats(); } },
@@ -778,7 +778,7 @@ function openSettings() {
     height: 820,
     minWidth: 580,
     minHeight: 600,
-    title: '薄荷云仪表盘 · 设置',
+    title: 'Xboard面板桌面仪表盘 · 设置',
     backgroundColor: '#f2f5f2',
     show: false,
     autoHideMenuBar: true,

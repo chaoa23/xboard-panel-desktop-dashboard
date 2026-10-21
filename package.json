@@ -1,5 +1,5 @@
 {
-  "name": "boheyun-dashboard-widget",
+  "name": "xboard-panel-desktop-dashboard",
   "version": "1.0.13",
   "description": "Transparent Windows desktop widget for Xboard dashboard statistics",
   "license": "MIT",
@@ -16,7 +16,7 @@
   },
   "build": {
     "appId": "com.boheyun.dashboardwidget",
-    "productName": "薄荷云仪表盘",
+    "productName": "Xboard面板桌面仪表盘",
     "asar": true,
     "asarUnpack": [
       "electron/workerw.ps1"
@@ -40,14 +40,14 @@
         "nsis"
       ],
       "requestedExecutionLevel": "asInvoker",
-      "artifactName": "boheyun-dashboard-widget-${version}-Setup.${ext}"
+      "artifactName": "xboard-panel-desktop-dashboard-${version}-Setup.${ext}"
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "薄荷云仪表盘"
+      "shortcutName": "Xboard面板桌面仪表盘"
     }
   }
 }
