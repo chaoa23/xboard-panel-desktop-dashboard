@@ -30,4 +30,5 @@ npm run dist
 
 ## 贡献者
 
+- @chaoa23 — 项目维护者
 - OpenAI Codex — 协助项目开发与发布
