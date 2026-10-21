@@ -1,6 +1,6 @@
 # Xboard面板桌面仪表盘
 
-Windows Electron 小组件，读取 Xboard 管理后台的今日收入、待处理工单和待处理佣金订单数。项目独立于仓库根目录的 VPN 客户端，不会修改或启动它。
+Windows Electron 小组件，读取 Xboard 管理后台的今日收入、待处理工单和待处理佣金订单数。
 
 ## 开发运行
 
