@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>薄荷云仪表盘 · 设置</title>
+  <link rel="stylesheet" href="settings.css">
+  <script defer src="settings.js"></script>
+</head>
+<body>
+  <main class="settings-page">
+    <header class="page-heading">
+      <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div><p class="eyebrow">BOHEYUN / DESKTOP</p><h1>桌面仪表盘</h1><p class="subheading">连接你的 Xboard 管理面板，仅读取仪表盘统计。</p></div>
+    </header>
+
+    <form id="settings-form" autocomplete="off" novalidate>
+      <section class="section">
+        <div class="section-heading"><span class="section-index">01</span><div><h2>面板连接</h2><p>后台授权值会通过 Windows 安全存储加密保存。</p></div></div>
+        <label class="field"><span>面板 HTTPS 地址</span><input id="panel-url" type="url" placeholder="https://panel.example.com" required spellcheck="false"></label>
+        <label class="field"><span>后台安全路径</span><input id="secure-path" type="text" placeholder="例如：a1b2c3d4" required spellcheck="false"></label>
+        <label class="field"><span>Authorization 授权值 <small id="token-hint">必填</small></span><input id="authorization" type="password" placeholder="Bearer …" autocomplete="new-password" spellcheck="false"></label>
+        <details class="help"><summary>如何找到后台安全路径和授权值？</summary><ol>
+          <li>从后台网址复制域名作为面板地址；地址中域名后的路径（不含 <code>/</code> 和 <code>#</code>）就是安全路径。</li>
+          <li>登录后台后按 <kbd>F12</kbd> →「应用程序」→「本地存储」→ 当前域名。</li>
+          <li>找到 <code>XBOARD_ACCESS_TOKEN</code>，打开其 JSON 内容，复制 <code>value</code> 的完整值（包含 <code>Bearer </code>）。不要把授权值发给任何人。</li>
+        </ol></details>
+        <div class="connection-actions">
+          <button class="secondary-button" id="save-connection-button" type="button"><span>保存连接信息</span><i aria-hidden="true">↗</i></button>
+          <small>修改连接信息后，点击此按钮开始连接。</small>
+        </div>
+        <p class="connection-message" id="connection-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="section appearance-section">
+        <div class="section-heading"><span class="section-index">02</span><div><h2>桌面显示</h2><p>桌面层会把小组件放在壁纸和桌面图标之间。</p></div></div>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="placement" value="desktop"><span class="choice-title">桌面层</span><span class="choice-copy">像壁纸组件一样停在桌面</span></label>
+          <label class="choice"><input type="radio" name="placement" value="floating"><span class="choice-title">透明浮窗</span><span class="choice-copy">在其他应用前方显示</span></label>
+        </div>
+        <div class="position-fields" aria-label="窗口位置">
+          <label class="field range-field" for="position-x">
+            <span><span class="range-title">水平位置 X <small>向右移动</small></span><b id="position-x-label">0 / 0 px</b></span>
+            <input id="position-x" type="range" min="0" max="0" step="1" value="0" aria-describedby="position-x-help">
+            <small class="range-help" id="position-x-help">相对主屏工作区左边缘</small>
+          </label>
+          <label class="field range-field" for="position-y">
+            <span><span class="range-title">垂直位置 Y <small>向下移动</small></span><b id="position-y-label">0 / 0 px</b></span>
+            <input id="position-y" type="range" min="0" max="0" step="1" value="0" aria-describedby="position-y-help">
+            <small class="range-help" id="position-y-help">相对主屏工作区上边缘</small>
+          </label>
+        </div>
+        <div class="inline-fields">
+          <label class="field opacity-field"><span>背景面板透明度 <b id="panel-opacity-label">88%</b></span><input id="panel-opacity" type="range" min="0" max="100" step="1"></label>
+          <label class="field opacity-field"><span>文字透明度 <b id="text-opacity-label">100%</b></span><input id="text-opacity" type="range" min="0" max="100" step="1"></label>
+        </div>
+        <label class="field opacity-field radius-field" for="panel-radius">
+          <span>面板圆角半径 <b id="panel-radius-label">17 px</b></span>
+          <input id="panel-radius" type="range" min="0" max="32" step="1" value="17" aria-describedby="panel-radius-help">
+          <small class="range-help" id="panel-radius-help">0 px 为直角，32 px 为最大圆角</small>
+        </label>
+        <label class="startup-row"><input id="open-at-login" type="checkbox"><span><strong>Windows 登录时自动启动</strong><small>在设置中可随时关闭</small></span></label>
+      </section>
+
+      <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+      <footer class="form-actions">
+        <button class="secondary-button" id="cancel-button" type="button">取消</button>
+        <button class="primary-button" id="save-button" type="submit"><span>保存显示设置</span><i aria-hidden="true">↗</i></button>
+      </footer>
+    </form>
+    <p class="privacy-note"><span aria-hidden="true">◆</span> 授权值只保存在本机，用于读取统计，不会上传到其他服务。</p>
+  </main>
+</body>
+</html>

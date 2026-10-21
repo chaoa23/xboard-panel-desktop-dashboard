@@ -1,0 +1,11 @@
+node_modules/
+release/
+release-*/
+backups/
+*.log
+*.local
+.env
+.env.*
+*.exe
+*.blockmap
+/main.js

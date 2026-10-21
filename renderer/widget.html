@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>薄荷云仪表盘</title>
+  <link rel="stylesheet" href="widget.css">
+  <script defer src="widget.js"></script>
+</head>
+<body>
+  <main class="widget" aria-label="面板实时统计">
+    <section class="metrics" aria-label="面板统计" aria-live="polite" aria-atomic="true">
+      <article class="metric income">
+        <div class="metric-heading">
+          <span class="metric-label">今日收入</span>
+        </div>
+        <strong class="metric-value" id="income-value">—</strong>
+        <span class="metric-description trend" id="income-description">
+          <svg class="trend-icon" id="income-trend-icon" aria-hidden="true" viewBox="0 0 24 24">
+            <path id="income-trend-path" d="m3 17 6-6 4 4 8-8" />
+            <path d="M14 7h7v7" />
+          </svg>
+          <span id="income-growth-value"></span>
+          <span class="description-label">对比昨日</span>
+        </span>
+      </article>
+      <article class="metric">
+        <div class="metric-heading">
+          <span class="metric-label">待处理工单</span>
+        </div>
+        <strong class="metric-value" id="tickets-value">—</strong>
+        <span class="metric-description" id="tickets-description"></span>
+      </article>
+      <article class="metric">
+        <div class="metric-heading">
+          <span class="metric-label">待处理佣金</span>
+        </div>
+        <strong class="metric-value" id="commission-value">—</strong>
+        <span class="metric-description" id="commission-description"></span>
+      </article>
+    </section>
+    <p class="notice notice-connecting" id="notice" role="status" aria-live="polite" aria-atomic="true"><span id="notice-text">正在连接…</span></p>
+  </main>
+</body>
+</html>

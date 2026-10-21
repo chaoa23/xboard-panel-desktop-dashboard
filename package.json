@@ -1,0 +1,53 @@
+{
+  "name": "boheyun-dashboard-widget",
+  "version": "1.0.13",
+  "description": "Transparent Windows desktop widget for Xboard dashboard statistics",
+  "license": "MIT",
+  "private": false,
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis",
+    "test": "node --test tests/*.test.cjs"
+  },
+  "devDependencies": {
+    "electron": "^36.3.2",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.boheyun.dashboardwidget",
+    "productName": "薄荷云仪表盘",
+    "asar": true,
+    "asarUnpack": [
+      "electron/workerw.ps1"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron/**/*",
+      "renderer/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "electron/workerw.ps1",
+        "to": "workerw.ps1"
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "requestedExecutionLevel": "asInvoker",
+      "artifactName": "boheyun-dashboard-widget-${version}-Setup.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "薄荷云仪表盘"
+    }
+  }
+}
